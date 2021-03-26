@@ -8,6 +8,10 @@ class RedirectLocale
 {
     public function handle($request, Closure $next)
     {
+        if (! config('localized-routes.auto_redirect_to_localized_route')) {
+            return $next($request);
+        }
+
         $locale = $request->segment(1);
 
         if (! array_key_exists($locale, config('localized-routes.locales'))) {

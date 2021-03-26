@@ -10,6 +10,11 @@ class LocalizedRoutesMacro
     public static function register()
     {
         Route::macro('localized', function ($callback) {
+            if (! config('localized-routes.enable_localized_routes')) {
+                $callback();
+                return;
+            }
+
             $locales = config('localized-routes.locales');
 
             foreach ($locales as $abbreviation => $locale) {

@@ -42,6 +42,10 @@ class LocalizedRoutesServiceProvider extends ServiceProvider
 
     private function determineAppLocale()
     {
+        if (! config('localized-routes.auto_detect_locales')) {
+            return;
+        }
+
         $locale = app()->request->segment(1);
 
         if (array_key_exists($locale, config('localized-routes.locales'))) {
