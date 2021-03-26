@@ -78,7 +78,23 @@ Route::localized(function () {
 });
 ```
 
-and thats it!
+and thats it! You can still give your routes a name like you're used to:
+```php
+Route::localized(function () {
+    Route::get('home', HomeController::class)->name('home');
+});
+```
+
+```blade.php
+<!-- in your blade view -->
+<a href="{{ route('home') }}">Home</a>
+<!-- will return /{locale}/home -->
+```
+
+If you want to switch to a different localized route, you can do so with the `switchLanguage` function.
+```php
+switchLanguage('fr'); // will return the current route, but the localized part is substituted with the new language
+```
 
 ## Related repositories
 This package is a simplified version of: [codezero-be/laravel-localized-routes](https://github.com/codezero-be/laravel-localized-routes)
