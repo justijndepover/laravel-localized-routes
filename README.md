@@ -71,7 +71,19 @@ return [
 
 ## Usage
 
-coming soon
+To make your routes multi lingual add this in your `web.php`:
+```php
+Route::localized(function () {
+    // Every route in here is localized
+});
+```
+
+and thats it!
+
+## Related repositories
+This package is a simplified version of: [codezero-be/laravel-localized-routes](https://github.com/codezero-be/laravel-localized-routes)
+
+If you want a more robust solution with more options, check out their version.
 
 ## Security
 
