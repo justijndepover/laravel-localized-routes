@@ -12,6 +12,7 @@ class LocalizedRoutesMacro
         Route::macro('localized', function ($callback) {
             if (! config('localized-routes.enable_localized_routes')) {
                 $callback();
+
                 return;
             }
 
