@@ -55,6 +55,10 @@ class LocalizedRoutesServiceProvider extends ServiceProvider
         if (app()->request->hasHeader('locale') && array_key_exists(app()->request->header('locale'), config('localized-routes.locales'))) {
             app()->setLocale(app()->request->header('locale'));
         }
+
+        if (app()->request->hasHeader('Accept-Language') && array_key_exists(app()->request->header('Accept-Language'), config('localized-routes.locales'))) {
+            app()->setLocale(app()->request->header('Accept-Language'));
+        }
     }
 
     protected function registerUrlGenerator()
