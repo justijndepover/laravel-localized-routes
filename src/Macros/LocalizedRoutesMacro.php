@@ -17,13 +17,18 @@ class LocalizedRoutesMacro
             }
 
             $locales = config('localized-routes.locales');
+            $currentLocale = app()->getLocale();
 
             foreach ($locales as $abbreviation => $locale) {
+                app()->setLocale($abbreviation);
+
                 Route::name("$abbreviation.")
                     ->prefix($abbreviation)
                     ->middleware(RedirectLocale::class)
                     ->group($callback);
             }
+
+            app()->setLocale($currentLocale);
 
             // register a fallback
             Route::fallback(function () {
