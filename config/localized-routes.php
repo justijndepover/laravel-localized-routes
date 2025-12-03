@@ -17,6 +17,14 @@ return [
     ],
 
     /**
+     * If you want to use different different domains per locale, here is where you set it.
+     */
+    'domains' => [
+        // 'nl' => 'www.domain.com',
+        // 'fr' => 'www.otherdomain.com',
+    ],
+
+    /**
      * Automatically detect locales
      *
      * With this setting enabled, you can automatically detect locales.

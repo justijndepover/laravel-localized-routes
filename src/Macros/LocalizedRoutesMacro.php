@@ -22,10 +22,17 @@ class LocalizedRoutesMacro
             foreach ($locales as $abbreviation => $locale) {
                 app()->setLocale($abbreviation);
 
-                Route::name("$abbreviation.")
+                $domain = config("localized-routes.domains.$abbreviation") ?: null;
+
+                $route = Route::name("$abbreviation.")
                     ->prefix($abbreviation)
-                    ->middleware(RedirectLocale::class)
-                    ->group($callback);
+                    ->middleware(RedirectLocale::class);
+
+                if ($domain) {
+                    $route->domain($domain);
+                }
+
+                $route->group($callback);
             }
 
             app()->setLocale($currentLocale);
