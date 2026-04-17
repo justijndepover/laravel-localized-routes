@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 if (! function_exists('localized_route')) {
-    function localized_route(String $name, $parameters = [], Bool $absolute = true, String $locale = null): string
+    function localized_route(String $name, $parameters = [], Bool $absolute = true, ?String $locale = null): string
     {
         return app('url')->route($name, $parameters, $absolute, $locale);
     }
